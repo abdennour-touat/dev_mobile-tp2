@@ -1,58 +1,149 @@
-# Flutter True/False Quiz App
+# Flutter Applications Repository
 
-A simple yet engaging quiz application built with Flutter that presents users with true/false questions about general knowledge facts. Each question is accompanied by a relevant image to enhance the learning experience.
+This repository contains multiple Flutter applications demonstrating different state management approaches and functionalities. It includes a Quiz App implemented with both Provider and BLoC patterns, and a Weather App using standard Flutter state management.
 
-## Features
+## Applications Overview
 
+### 1. Quiz App (Provider Implementation)
+### 2. Quiz App (BLoC Implementation)
+### 3. Weather App
+
+## Project Structure
+
+```
+lib/
+├── main.dart               # App entry point
+├── quiz/
+│   ├── provider/          # Provider implementation
+│   │   ├── quiz_provider.dart
+│   │   └── quiz_page.dart
+│   ├── bloc/             # BLoC implementation
+│   │   ├── quiz_bloc.dart
+│   │   ├── quiz_event.dart
+│   │   ├── quiz_state.dart
+│   │   └── quiz_page.dart
+│   └── models/
+│       └── question.dart
+├── weather/
+│   ├── models/
+│   │   └── weather.dart
+│   ├── services/
+│   │   └── weather_service.dart
+│   ├── components/
+│   │   └── forecast.dart
+│   └── pages/
+│       └── weather_page.dart
+```
+
+
+## Quiz App Features
+
+Common features across both implementations:
 - True/False questions with image illustrations
 - Immediate feedback on answers
-- Simple and intuitive user interface
 - Question navigation system
 - Visual feedback with color-coded responses
 - French language interface
 
-## Structure
+### Provider Implementation
+- State management using Provider pattern
+- Simple and intuitive state updates
+- Direct access to state through context
 
-The app consists of two main classes:
-- `QuizzPage`: The main stateful widget that handles the quiz interface
-- `Question`: A data model class that holds question information
+### BLoC Implementation
+- Event-driven architecture
+- Clear separation of business logic
+- Immutable state management
+- Predictable state transitions
 
-## Getting Started
+## Weather App Features
 
+- Current weather display
+- 4-day weather forecast
+- City-based weather search
+- Detailed weather metrics:
+    - Temperature
+    - Humidity
+    - Wind Speed
+    - Precipitation
+- Weather condition icons
+- Formatted date display
 
-### Installation
+## Setup and Installation
 
-1. Clone this repository
-2. Navigate to the project directory
-3. Run `flutter pub get` to install dependencies
-4. Run `flutter run` to start the application
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   flutter pub get
+   ```
+3. For Weather App: Get an API key from [OpenWeatherMap](https://openweathermap.org/api)
+4. Update the API key in `weather/services/weather_service.dart`
 
 ## Usage
 
-The quiz presents questions one at a time. For each question:
-1. Read the question text
-2. View the associated image
-3. Select either "Vrai" (True) or "Faux" (False)
-4. Receive immediate feedback on your answer
-5. Move to the next question using the "Question suivant" button
+### Quiz App (Provider)
+```dart
+// Access the quiz state
+final quizProvider = context.watch<QuizProvider>();
 
-## Current Question Set
+// Update state
+context.read<QuizProvider>().checkAnswer(true);
+```
 
-The quiz currently includes questions about:
-- The location of the Eiffel Tower
-- The Great Wall of China's visibility from space
-- Amazon rainforest's oxygen production
-- Whales' classification
-- Mount Everest's height status
+### Quiz App (BLoC)
+```dart
+// Dispatch events
+context.read<QuizBloc>().add(CheckAnswerEvent(true));
+context.read<QuizBloc>().add(NextQuestionEvent());
+```
 
-## Customization
+### Weather App
+1. Launch the app
+2. Enter a city name
+3. Tap "Get Weather"
+4. View weather information and forecast
 
-To add or modify questions, update the `_questions` list in the `_QuizzPageState` class. Each question requires:
-- `text`: The question text
-- `isCorrect`: The correct answer (true/false)
-- `imageUrl`: A URL to an illustration image (optional)
+## State Management Comparison
 
+### Provider
+- Pros:
+    - Simple implementation
+    - Easy to understand
+    - Direct state access
+- Best for:
+    - Small to medium applications
+    - Simple state management needs
 
-## License
+### BLoC
+- Pros:
+    - Better separation of concerns
+    - Testable business logic
+    - Predictable state flow
+- Best for:
+    - Large applications
+    - Complex state management
+    - Team development
 
-This project is open source and available under the MIT License.
+## Error Handling
+
+Each application implements error handling for:
+- Invalid inputs
+- Failed API requests (Weather App)
+- State transitions
+- User feedback
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Implement your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## Testing
+
+Run tests using:
+```bash
+flutter test
+```
+

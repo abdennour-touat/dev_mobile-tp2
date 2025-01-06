@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/QuizzPage.dart';
 
-import 'ProfileHomePage.dart';
+import 'package:untitled/Providers/QuizzProvider.dart';
 
-void main() => runApp(MyApp()); // Point d'entrée
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => QuizProvider(),
+      child: const MyApp(),
+    ),
+  );
+}
+
 
 // Le widget racine de notre application
 class MyApp extends StatelessWidget {

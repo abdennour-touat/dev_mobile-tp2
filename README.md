@@ -8,32 +8,6 @@ This repository contains multiple Flutter applications demonstrating different s
 ### 2. Quiz App (BLoC Implementation)
 ### 3. Weather App
 
-## Project Structure
-
-```
-lib/
-├── main.dart               # App entry point
-├── quiz/
-│   ├── provider/          # Provider implementation
-│   │   ├── quiz_provider.dart
-│   │   └── quiz_page.dart
-│   ├── bloc/             # BLoC implementation
-│   │   ├── quiz_bloc.dart
-│   │   ├── quiz_event.dart
-│   │   ├── quiz_state.dart
-│   │   └── quiz_page.dart
-│   └── models/
-│       └── question.dart
-├── weather/
-│   ├── models/
-│   │   └── weather.dart
-│   ├── services/
-│   │   └── weather_service.dart
-│   ├── components/
-│   │   └── forecast.dart
-│   └── pages/
-│       └── weather_page.dart
-```
 
 
 ## Quiz App Features

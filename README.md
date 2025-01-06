@@ -105,14 +105,7 @@ Each application implements error handling for:
 - Failed API requests (Weather App)
 - State transitions
 - User feedback
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Implement your changes
-4. Add tests if applicable
-5. Submit a pull request
+g
 
 ## Testing
 
